@@ -1,22 +1,20 @@
 import { useState, useEffect } from 'react';
 import Question from './Question';
 const Questions = () => {
-  const [question, setQuestion] = useState(null);
+  const [questions, setQuestion] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
       const res = await fetch('https://opentdb.com/api.php?amount=5');
       const { results } = await res.json();
-      console.log(results);
+      setQuestion(results);
     };
 
     getData();
   }, []);
-  return (
-    <div>
-      <Question />
-    </div>
-  );
+
+  const QuestionElement = questions.map((question, index) => <Question key={index} {...question} />);
+  return <div>{QuestionElement}</div>;
 };
 
 export default Questions;
