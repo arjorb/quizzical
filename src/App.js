@@ -1,7 +1,7 @@
 const App = () => {
   return (
-    <div className='App'>
-      <h1 className='text-3xl text-[#01685e] font-bold underline'>Setting up the environment!</h1>
+    <div className='bg-background h-screen bg-no-repeat bg-cover'>
+      <h1 className=''></h1>
     </div>
   );
 };
