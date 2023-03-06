@@ -14,7 +14,14 @@ const Questions = () => {
   }, []);
 
   const QuestionElement = questions.map((question, index) => <Question key={index} {...question} />);
-  return <div>{QuestionElement}</div>;
+  return (
+    <div>
+      <div>{QuestionElement}</div>
+      <div className='mt-10 bg-indigo-400 py-3 px-7 w-max rounded-md cursor-pointer text-white font-semibold'>
+        Check Answer
+      </div>
+    </div>
+  );
 };
 
 export default Questions;

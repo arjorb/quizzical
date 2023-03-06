@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 const Question = ({ question, correct_answer, incorrect_answers }) => {
-  const [response, setResponse] = useState([{ value: shuffledHandler() }]);
+  const [response, setResponse] = useState(shuffledHandler());
+  const [currentSelect, setCurrentSelect] = useState();
 
   function shuffledHandler() {
     const answers = [...[correct_answer], ...incorrect_answers];
@@ -13,19 +14,17 @@ const Question = ({ question, correct_answer, incorrect_answers }) => {
         isSelected: false,
       };
     });
-    return shuffled;
+    return newArray;
   }
 
-  function selectResponse(id) {
-    console.log(`cliked ${id}`);
-  }
-
-  const responseElement = response.map((response, index) => (
+  const responseElement = response.map(response => (
     <div
-      className={`border-2 border-gray-200 px-5 rounded-full ${isSelected ? 'bg-green-400' : ''}`}
-      onClick={() => selectResponse(index)}
+      className={`border-2 border-gray-200 px-5 rounded-full cursor-pointer ${
+        currentSelect === response.id ? 'bg-green-500 text-white' : ''
+      }`}
+      onClick={() => setCurrentSelect(response.id)}
     >
-      {response}
+      {response.value}
     </div>
   ));
 
