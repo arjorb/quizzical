@@ -1,19 +1,29 @@
 import { useState, useEffect } from 'react';
+// import { nanoid } from 'nanoid';
 import Question from './Question';
 const Questions = () => {
-  const [questions, setQuestion] = useState([]);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // const [response, setResponse] = useState(shuffledHandler());
+  // const [currentSelect, setCurrentSelect] = useState();
+
+  // variables
+
+  // fetching the data from the api
 
   useEffect(() => {
-    const getData = async () => {
+    async function getData() {
       const res = await fetch('https://opentdb.com/api.php?amount=5');
       const { results } = await res.json();
-      setQuestion(results);
-    };
-
+      setData(results);
+    }
     getData();
   }, []);
 
-  const QuestionElement = questions.map((question, index) => <Question key={index} {...question} />);
+  console.log(data);
+  const QuestionElement = data.map((question, index) => <Question key={index} {...data} />);
+
   return (
     <div>
       <div>{QuestionElement}</div>
