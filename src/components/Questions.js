@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
 import Question from './Question';
 
 const Questions = () => {
@@ -17,7 +16,6 @@ const Questions = () => {
         correct: question.correct_answer,
         incorrect: question.incorrect_answers,
         answers: shuffledHandler(question.correct_answer, question.incorrect_answers),
-        id: nanoid(),
         isSelected: false,
       }));
       setData(questions);
@@ -26,12 +24,21 @@ const Questions = () => {
     getData();
   }, []);
 
+  // console.log(data);
   // Generate the random array for answers
   function shuffledHandler(correct, incorrect) {
     const answers = [...[correct], ...incorrect];
     const shuffled = answers.sort(() => Math.random() - 0.5);
     const newArray = shuffled.map(item => item);
     return newArray;
+  }
+
+  function selectHandler(id) {
+    const selected = data.answers.map(item => {
+      return item.id === id ? { ...item, isSelected: !item.isSelected } : { ...item };
+    });
+    setData(selected);
+    console.log(selected);
   }
 
   const QuestionElement = data.map((question, index) => <Question key={index} {...question} />);
