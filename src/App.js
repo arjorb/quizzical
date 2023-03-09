@@ -8,7 +8,7 @@ const App = () => {
     setStart(true);
   };
   return (
-    <div className='bg-background max-h-fit bg-no-repeat bg-cover py-10 pl-40'>
+    <div className='bg-background min-h-screen bg-no-repeat bg-cover'>
       {!start ? <Home handleStart={handleStart} /> : <Questions />}
     </div>
   );

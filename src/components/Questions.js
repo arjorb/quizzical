@@ -46,15 +46,15 @@ const Questions = () => {
         </div>
       ) : (
         <div>
-          <div>{QuestionElement}</div>
+          <div className='flex flex-col justify-center items-center'>{QuestionElement}</div>
           {checked ? (
-            <div className='flex items-center gap-16 max-w-96 mx-auto mt-5'>
-              <h1 className='text-primary-100 font-bold text-xl leading-4'>
-                <span>You scored</span>
+            <div className='flex items-center gap-16 max-w-96 mx-auto mt-5 pl-40'>
+              <h1 className='font-bold text-xl leading-4'>
+                <span>You scored </span>
                 <span>
                   {success.filter(x => x).length}/{data.length}
                 </span>
-                <span>correct answers</span>
+                <span> correct answers</span>
               </h1>
               <button
                 onClick={() => window.location.reload(false)}
@@ -64,7 +64,7 @@ const Questions = () => {
               </button>
             </div>
           ) : (
-            <div className='flex items-center gap-16 max-w-96 mx-auto'>
+            <div className='flex items-center gap-16 max-w-96 mx-auto pl-40'>
               <button
                 onClick={() => {
                   setChecked(true);
