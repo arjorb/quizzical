@@ -1,13 +1,30 @@
 import { useState } from 'react';
 
-const Question = ({ question, answers, selected }) => {
+const Question = ({ question, answers, correct, id, checked, setSuccess }) => {
+  const [submitted, setSubmitted] = useState(null);
+
   const responseElement = answers.map((response, index) => (
     <div
       key={index}
-      onClick={() => selected(response)}
-      className={`border-2 border-gray-200 px-5 rounded-full cursor-pointer`}
+      className={`border whitespace-nowrap border-primary-100  rounded-lg px-2 py-1 ${
+        submitted === index && !checked && 'bg-indigo-200'
+      } ${response === correct && checked && 'bg-green-300'} ${
+        submitted === index && correct !== response && checked && 'bg-red-100'
+      } `}
     >
-      {response}
+      <button
+        disabled={checked}
+        onClick={() => {
+          setSubmitted(index);
+          setSuccess(prev => {
+            prev[id] = response === correct;
+            return prev;
+          });
+        }}
+        className='text-primary-100'
+      >
+        {response}
+      </button>
     </div>
   ));
 

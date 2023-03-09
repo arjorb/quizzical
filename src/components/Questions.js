@@ -39,7 +39,7 @@ const Questions = () => {
       key={index}
       question={question.question}
       answers={question.answers}
-      correct_answer={question.correct}
+      correct={question.correct}
       id={question.id}
       checked={checked}
       setSuccess={setSuccess}
