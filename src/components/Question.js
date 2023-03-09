@@ -2,7 +2,11 @@ import { useState } from 'react';
 
 const Question = ({ question, answers, selected }) => {
   const responseElement = answers.map((response, index) => (
-    <div key={index} className={`border-2 border-gray-200 px-5 rounded-full cursor-pointer`}>
+    <div
+      key={index}
+      onClick={() => selected(response)}
+      className={`border-2 border-gray-200 px-5 rounded-full cursor-pointer`}
+    >
       {response}
     </div>
   ));
