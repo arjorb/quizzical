@@ -35,15 +35,7 @@ const Questions = () => {
   const [success, setSuccess] = useState(Array.from({ length: 5 }));
 
   const QuestionElement = data.map((question, index) => (
-    <Question
-      key={index}
-      question={question.question}
-      answers={question.answers}
-      correct={question.correct}
-      id={question.id}
-      checked={checked}
-      setSuccess={setSuccess}
-    />
+    <Question key={index} {...question} checked={checked} setSuccess={setSuccess} />
   ));
 
   return (
@@ -56,7 +48,7 @@ const Questions = () => {
         <div>
           <div>{QuestionElement}</div>
           {checked ? (
-            <div className='flex items-center gap-16 max-w-96 mx-auto'>
+            <div className='flex items-center gap-16 max-w-96 mx-auto mt-5'>
               <h1 className='text-primary-100 font-bold text-xl leading-4'>
                 <span>You scored</span>
                 <span>
@@ -66,7 +58,7 @@ const Questions = () => {
               </h1>
               <button
                 onClick={() => window.location.reload(false)}
-                className='text-white bg-primary-200 rounded-xl lg:px-2 py-1'
+                className='text-white bg-indigo-500 rounded-md px-5 py-2'
               >
                 Play again
               </button>
@@ -77,7 +69,7 @@ const Questions = () => {
                 onClick={() => {
                   setChecked(true);
                 }}
-                className='text-white bg-primary-200 rounded-xl px-2 py-1'
+                className='text-white bg-indigo-500 mt-5 rounded-md px-5 py-2'
               >
                 Check answers
               </button>
