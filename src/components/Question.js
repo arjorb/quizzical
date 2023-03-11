@@ -21,7 +21,6 @@ const Question = ({ question, answers, correct, id, checked, setSuccess }) => {
             return prev;
           });
         }}
-        className='text-primary-100'
       >
         {response}
       </button>
