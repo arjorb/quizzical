@@ -3,6 +3,14 @@ import { useState } from 'react';
 const Question = ({ question, answers, correct, id, checked, setSuccess }) => {
   const [submitted, setSubmitted] = useState(null);
 
+  const updateButton = (index, response) => {
+    setSubmitted(index);
+    setSuccess(prev => {
+      prev[id] = response === correct;
+      return prev;
+    });
+  };
+
   const responseElement = answers.map((response, index) => (
     <div
       key={index}
@@ -12,16 +20,7 @@ const Question = ({ question, answers, correct, id, checked, setSuccess }) => {
         submitted === index && correct !== response && checked && 'bg-red-100'
       } `}
     >
-      <button
-        disabled={checked}
-        onClick={() => {
-          setSubmitted(index);
-          setSuccess(prev => {
-            prev[id] = response === correct;
-            return prev;
-          });
-        }}
-      >
+      <button disabled={checked} onClick={() => updateButton(index, response)}>
         {response}
       </button>
     </div>
