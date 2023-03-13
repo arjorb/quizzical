@@ -63,12 +63,7 @@ const Questions = () => {
             </div>
           ) : (
             <div className='flex items-center gap-16 max-w-96 mx-auto pl-40'>
-              <button
-                onClick={() => {
-                  setChecked(true);
-                }}
-                className='text-white bg-indigo-500 mt-5 rounded-md px-5 py-2'
-              >
+              <button onClick={() => setChecked(true)} className='text-white bg-indigo-500 mt-5 rounded-md px-5 py-2'>
                 Check answers
               </button>
             </div>
