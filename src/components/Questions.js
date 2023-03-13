@@ -53,7 +53,7 @@ const Questions = () => {
             <div className='flex items-center gap-16 max-w-96 mx-auto mt-5 pl-40'>
               <h1 className='font-bold text-xl leading-4'>
                 <p>
-                  You scored {success.filter(x => x).length}/{data.length} correct answers
+                  You scored {success.filter(answer => answer).length}/{data.length} correct answers
                 </p>
               </h1>
               <button onClick={resetHandler} className='text-white bg-indigo-500 rounded-md px-5 py-2'>
