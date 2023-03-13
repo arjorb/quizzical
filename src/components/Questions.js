@@ -36,7 +36,7 @@ const Questions = () => {
     setChecked(false);
   };
 
-  const QuestionElement = data.map((question, index) => (
+  const questionElement = data.map((question, index) => (
     <Question key={index} {...question} checked={checked} setSuccess={setSuccess} />
   ));
 
@@ -48,7 +48,7 @@ const Questions = () => {
         </div>
       ) : (
         <div>
-          <div className='flex flex-col justify-center items-center'>{QuestionElement}</div>
+          <div className='flex flex-col justify-center items-center'>{questionElement}</div>
           {checked ? (
             <div className='flex items-center gap-16 max-w-96 mx-auto mt-5 pl-40'>
               <h1 className='font-bold text-xl leading-4'>
