@@ -28,8 +28,7 @@ const Questions = () => {
   const shuffledHandler = (correct, incorrect) => {
     const answers = [...[correct], ...incorrect];
     const shuffled = answers.sort(() => Math.random() - 0.5);
-    const newArray = shuffled.map(item => item);
-    return newArray;
+    return shuffled;
   };
 
   const resetHandler = () => {
